@@ -1,0 +1,1103 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NEXO BUSINESS 2.0 · Gestión local</title><style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#19243b;background:#f4f7fb}*{box-sizing:border-box}body{margin:0}header{background:#102442;color:white;padding:17px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-size:20px;font-weight:800;letter-spacing:-.5px}.brand span{color:#64dfc3}.small{font-size:12px;color:#7d8ba3}.headsmall{color:#b2c2d8}.shell{max-width:1240px;margin:auto;padding:22px}.toolbar,.actions,.flex{display:flex;gap:9px;flex-wrap:wrap;align-items:center}button,.button{background:#235ad6;border:0;color:white;border-radius:9px;padding:10px 14px;font-weight:650;cursor:pointer;font:inherit;font-size:14px}button:hover{filter:brightness(.93)}button.secondary,.button.secondary{background:#e9eef8;color:#233c65}button.danger{background:#ffeaec;color:#a72d3b}button:disabled{opacity:.45;cursor:default}.tabs{display:flex;gap:7px;overflow:auto;margin:22px 0}.tabs button{background:transparent;color:#5a6881;white-space:nowrap}.tabs button.active{background:#122a4c;color:white}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat,.panel{background:white;border:1px solid #e2e8f1;border-radius:13px;padding:18px;box-shadow:0 2px 12px #15305a08}.stat strong{display:block;font-size:27px;letter-spacing:-1px;margin-top:8px;color:#102442}.stat label{font-size:13px;color:#718098}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel h2{font-size:17px;margin:0 0 14px}.muted{color:#73829b}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.wide{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#53647e}input,select,textarea{font:inherit;font-size:14px;border:1px solid #cfdae8;border-radius:8px;background:#fff;color:#19243b;padding:10px;width:100%}textarea{min-height:78px;resize:vertical}.list{display:flex;flex-direction:column;gap:9px}.item{border:1px solid #e2e8f1;padding:13px;border-radius:10px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}.item h3{margin:0 0 5px;font-size:15px}.item p{margin:3px 0;font-size:13px;color:#718098}.pill{font-size:11px;display:inline-block;border-radius:50px;padding:4px 8px;background:#e6eefb;color:#2954a2;font-weight:750}.pill.hot{background:#ffebd4;color:#a25300}.pill.done{background:#dff8eb;color:#157d54}.empty{padding:28px 14px;text-align:center;color:#7d8ba0;background:#f8fafd;border-radius:10px}.widepanel{margin-bottom:16px}.screen{display:none}.screen.active{display:block}.note{background:#fff9e7;border:1px solid #f2dda5;color:#78602b;border-radius:10px;padding:11px 14px;font-size:13px;margin-bottom:15px}.foot{color:#8793a6;font-size:12px;margin:30px 0}.tworow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.lines{display:flex;flex-direction:column;gap:8px}.line{display:grid;grid-template-columns:2fr .7fr 1fr auto;gap:6px}.quoteSum{text-align:right;font-weight:800;font-size:23px;margin:12px 0}.right{text-align:right}.hide{display:none!important}#printarea{display:none}dialog{border:none;border-radius:15px;width:min(550px,92vw);box-shadow:0 20px 100px #0005;padding:25px}dialog::backdrop{background:#07172a80}dialog h2{margin-top:0}@media(max-width:780px){.shell{padding:13px}.stats{grid-template-columns:1fr 1fr}.grid,.tworow{grid-template-columns:1fr}header{padding:15px}.stat strong{font-size:22px}.line{grid-template-columns:1.5fr .6fr .8fr auto}.formgrid{grid-template-columns:1fr}.field.wide{grid-column:auto}}@media print{body{background:white}header,.shell,#dlg{display:none!important}#printarea{display:block!important;padding:22mm;color:#222;font:14px Arial}#printarea table{width:100%;border-collapse:collapse}#printarea td,#printarea th{padding:9px;border-bottom:1px solid #ddd;text-align:left}#printarea .right{text-align:right}}
+</style><meta name="theme-color" content="#0d1b2a"><style id="nexo-v20-styles">
+:root{
+  --navy:#0d1b2a;
+  --navy-2:#132b43;
+  --ink:#142033;
+  --muted:#667085;
+  --line:#dce3ea;
+  --canvas:#f5f7fa;
+  --surface:#ffffff;
+  --teal:#0e7c78;
+  --teal-dark:#086561;
+  --teal-soft:#e4f4f2;
+  --amber:#b76a00;
+  --amber-soft:#fff3d8;
+  --red:#c73434;
+  --red-soft:#fdeaea;
+  --green:#177245;
+  --green-soft:#e7f5ed;
+  --sidebar:248px;
+  font-family:"Segoe UI",Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);
+  background:var(--canvas);
+}
+*{box-sizing:border-box}
+html{background:var(--canvas)}
+body{margin:0;min-width:320px;background:var(--canvas);color:var(--ink);font-variant-numeric:tabular-nums}
+button,input,select,textarea{font-family:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
+  outline:3px solid #8ac9c6;
+  outline-offset:2px;
+}
+header{
+  position:fixed;
+  z-index:50;
+  inset:0 auto auto 0;
+  width:var(--sidebar);
+  height:104px;
+  padding:25px 24px 18px;
+  display:block;
+  color:#fff;
+  background:var(--navy);
+  border-right:1px solid #20384f;
+}
+.brand{font-size:21px;font-weight:760;letter-spacing:-.35px;line-height:1.2}
+.brand span{color:#fff}
+.headsmall{margin-top:5px;color:#9fb1c3;font-size:12px;letter-spacing:.02em}
+header>.toolbar{display:none}
+.sidebar-close{display:none}
+.tabs{
+  position:fixed;
+  z-index:49;
+  left:0;
+  top:104px;
+  bottom:0;
+  width:var(--sidebar);
+  margin:0;
+  padding:10px 10px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  overflow:auto;
+  background:var(--navy);
+  border-right:1px solid #20384f;
+}
+.tabs button{
+  min-height:45px;
+  width:100%;
+  padding:0 13px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:0;
+  border-radius:6px;
+  background:transparent;
+  color:#c5d1dc;
+  font-size:14px;
+  font-weight:540;
+  text-align:left;
+  white-space:nowrap;
+}
+.tabs button:hover{background:#142c43;color:#fff;filter:none}
+.tabs button.active{
+  position:relative;
+  background:#17394b;
+  color:#fff;
+}
+.tabs button.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:8px;
+  bottom:8px;
+  width:3px;
+  border-radius:2px;
+  background:#36b9b1;
+}
+.nav-icon{width:19px;height:19px;display:inline-grid;place-items:center;flex:0 0 19px}
+.nav-icon svg{display:block;width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nav-divider{height:1px;background:#2e4356;margin:10px 5px}
+.shell{
+  width:auto;
+  max-width:none;
+  min-height:100vh;
+  margin:0 0 0 var(--sidebar);
+  padding:0 24px 34px;
+}
+.topbar{
+  min-height:72px;
+  margin:0 -24px 18px;
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+.topbar-left{min-width:0}
+.topbar h1{margin:0;font-size:25px;line-height:1.15;letter-spacing:-.55px}
+.topbar-context{display:none}
+.topbar-actions{display:flex;align-items:center;gap:16px}
+.safety-state{display:flex;align-items:center;gap:8px;color:#425466;font-size:12px;white-space:nowrap}
+.safety-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.menu-toggle{display:none}
+.topbar-brand{display:none}
+button,.button{
+  min-height:38px;
+  padding:8px 13px;
+  border:1px solid transparent;
+  border-radius:6px;
+  background:var(--teal);
+  color:#fff;
+  font:inherit;
+  font-size:13px;
+  font-weight:680;
+  line-height:1.2;
+  cursor:pointer;
+  box-shadow:none;
+}
+button:hover,.button:hover{background:var(--teal-dark);filter:none}
+button.secondary,.button.secondary{
+  background:#fff;
+  color:#294055;
+  border-color:#bdc9d5;
+}
+button.secondary:hover,.button.secondary:hover{background:#f3f6f8}
+button.danger{background:#fff;color:#a92929;border-color:#e6bcbc}
+button.danger:hover{background:var(--red-soft)}
+button:disabled{opacity:.48;cursor:not-allowed}
+.note{
+  margin:0 0 18px;
+  padding:9px 13px;
+  border:1px solid #d9e4e9;
+  border-left:3px solid var(--teal);
+  border-radius:5px;
+  background:#f8fbfc;
+  color:#526475;
+  font-size:12px;
+}
+.screen{display:none}
+.screen.active{display:block}
+.screen-head{
+  margin:2px 0 18px;
+  display:none;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+}
+.screen-head h1{margin:0;font-size:25px;line-height:1.2;letter-spacing:-.45px}
+.screen-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.stat,.panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:8px;
+  box-shadow:0 1px 3px rgba(13,27,42,.035);
+}
+.stat{min-height:112px;padding:17px 19px}
+.stat label{display:block;color:#526173;font-size:12px;font-weight:650;line-height:1.35}
+.stat strong{display:block;margin-top:9px;color:var(--navy);font-size:27px;line-height:1.1;letter-spacing:-.65px}
+.stat small{display:block;margin-top:7px;color:#7a8795;font-size:11px}
+.stat.attention{border-top:3px solid var(--amber)}
+.stat.positive{border-top:3px solid var(--teal)}
+.panel{padding:18px}
+.panel h2{margin:0;font-size:16px;line-height:1.3;letter-spacing:-.15px}
+.panel-head{
+  margin:-18px -18px 0;
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid var(--line);
+}
+.panel-head p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,.72fr);gap:14px;margin-bottom:14px}
+.dashboard-lower{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,.72fr);gap:14px}
+.table-wrap{margin:0 -18px -18px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{
+  padding:10px 14px;
+  color:#59687a;
+  background:#f5f7f9;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+td{padding:12px 14px;border-bottom:1px solid #e7ecf1;color:#34465a;vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#fbfcfd}
+.cell-title{display:block;color:var(--ink);font-weight:690}
+.cell-subtitle{display:block;margin-top:3px;color:#7b8794;font-size:11px}
+.status{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  padding:3px 8px;
+  border-radius:4px;
+  background:#edf1f5;
+  color:#46586b;
+  font-size:10.5px;
+  font-weight:720;
+}
+.status.en_curso,.status.aceptado{background:var(--teal-soft);color:#096963}
+.status.presupuestado,.status.nuevo{background:#eef2f6;color:#43566a}
+.status.realizado{background:var(--green-soft);color:var(--green)}
+.status.perdido{background:var(--red-soft);color:var(--red)}
+.status.overdue{background:var(--red-soft);color:var(--red)}
+.amount{color:var(--ink);font-weight:690;white-space:nowrap}
+.date-overdue{color:var(--red);font-weight:700}
+.row-action{min-width:31px;min-height:31px;padding:5px 8px}
+.priority-list{display:flex;flex-direction:column}
+.priority-row{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr);
+  gap:11px;
+  padding:13px 0;
+  border-bottom:1px solid #e5eaf0;
+}
+.priority-row:last-child{border-bottom:0}
+.priority-date{
+  min-height:43px;
+  padding:5px 2px;
+  display:grid;
+  place-content:center;
+  border-radius:5px;
+  background:#eef2f5;
+  color:#34465a;
+  text-align:center;
+  font-size:10px;
+  font-weight:730;
+  line-height:1.1;
+}
+.priority-date.hot{background:var(--red-soft);color:var(--red)}
+.priority-date span{display:block;font-size:16px}
+.priority-copy strong{display:block;font-size:12.5px}
+.priority-copy p{margin:4px 0 0;color:var(--muted);font-size:11.5px;line-height:1.45}
+.priority-empty{padding:20px 0;color:var(--muted);font-size:12px}
+.finance-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:8px 0}
+.finance-item{padding:9px 18px;border-right:1px solid var(--line)}
+.finance-item:last-child{border-right:0}
+.finance-item label{display:block;color:#59687a;font-size:11.5px;font-weight:650}
+.finance-item strong{display:block;margin-top:9px;font-size:22px;letter-spacing:-.45px}
+.finance-item small{display:block;margin-top:5px;color:#7b8794;font-size:10.5px}
+.backup-summary{
+  margin-top:15px;
+  padding:13px;
+  border:1px solid #cfe4d7;
+  border-radius:6px;
+  background:var(--green-soft);
+}
+.backup-summary strong{display:block;font-size:12.5px;color:#195d3e}
+.backup-summary p{margin:5px 0 0;color:#4e6f60;font-size:11.5px;line-height:1.45}
+.backup-summary .toolbar{margin-top:11px}
+.toolbar,.actions,.flex{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:14px}
+.panel h2{margin-bottom:14px}
+.panel-head h2{margin-bottom:0}
+.widepanel{margin-bottom:14px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.wide{grid-column:1/-1}
+.field label{color:#4e5d6f;font-size:11.5px;font-weight:690}
+input,select,textarea{
+  width:100%;
+  min-height:40px;
+  padding:9px 10px;
+  border:1px solid #c8d3de;
+  border-radius:5px;
+  background:#fff;
+  color:var(--ink);
+  font:inherit;
+  font-size:13px;
+}
+input:hover,select:hover,textarea:hover{border-color:#9eafbd}
+textarea{min-height:82px;resize:vertical}
+.list{display:flex;flex-direction:column;gap:0}
+.item{
+  padding:13px 2px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  border:0;
+  border-bottom:1px solid #e4e9ee;
+  border-radius:0;
+}
+.item:last-child{border-bottom:0}
+.item h3{margin:0 0 4px;color:var(--ink);font-size:13.5px}
+.item p{margin:3px 0;color:#6c7988;font-size:12px}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  min-height:22px;
+  padding:3px 7px;
+  border-radius:4px;
+  background:#edf1f5;
+  color:#46586b;
+  font-size:10.5px;
+  font-weight:720;
+}
+.pill.hot{background:var(--red-soft);color:var(--red)}
+.pill.done{background:var(--green-soft);color:var(--green)}
+.muted,.small{color:var(--muted)}
+.small{font-size:11.5px;line-height:1.5}
+.empty{
+  padding:30px 14px;
+  border:1px dashed #ccd5dd;
+  border-radius:6px;
+  background:#fafbfc;
+  color:#6f7c8b;
+  font-size:12px;
+  text-align:center;
+}
+.tworow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lines{display:flex;flex-direction:column;gap:8px}
+.line{display:grid;grid-template-columns:2fr .7fr 1fr auto;gap:6px}
+.quoteSum{margin:14px 0;text-align:right;font-size:22px;font-weight:750}
+.backup-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.backup-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:14px}
+.backup-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.backup-actions button{width:100%}
+.snapshot-list{margin-top:3px}
+.snapshot-row{
+  padding:11px 0;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  border-bottom:1px solid #e5eaf0;
+}
+.snapshot-row:last-child{border-bottom:0}
+.snapshot-row strong{display:block;font-size:12.5px}
+.snapshot-row p{margin:3px 0 0;color:var(--muted);font-size:11px}
+.backup-warning{
+  margin-top:14px;
+  padding:11px 12px;
+  border-left:3px solid var(--amber);
+  background:var(--amber-soft);
+  color:#795016;
+  font-size:11.5px;
+  line-height:1.5;
+}
+.foot{
+  margin:28px 0 0;
+  padding-top:17px;
+  border-top:1px solid var(--line);
+  color:#7d8895;
+  font-size:11px;
+  line-height:1.5;
+}
+dialog{
+  width:min(620px,calc(100vw - 28px));
+  max-height:88vh;
+  overflow:auto;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  box-shadow:0 24px 80px rgba(5,18,31,.28);
+}
+dialog::backdrop{background:rgba(6,19,31,.62)}
+dialog h2{margin:0 0 16px;font-size:19px}
+.nav-backdrop{display:none}
+.hide{display:none!important}
+#printarea{display:none}
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+@media(max-width:1100px){
+  .dashboard-grid,.dashboard-lower{grid-template-columns:1fr}
+  .finance-strip{grid-template-columns:repeat(2,1fr)}
+  .finance-item:nth-child(2){border-right:0}
+  .finance-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media(max-width:860px){
+  :root{--sidebar:0px}
+  body.nav-open{overflow:hidden}
+  header{
+    width:278px;
+    height:104px;
+    transform:translateX(-101%);
+    transition:transform .2s ease;
+  }
+  .tabs{
+    width:278px;
+    transform:translateX(-101%);
+    transition:transform .2s ease;
+  }
+  body.nav-open header,body.nav-open .tabs{transform:translateX(0)}
+  .sidebar-close{
+    position:absolute;
+    display:grid;
+    place-items:center;
+    right:13px;
+    top:20px;
+    width:34px;
+    min-height:34px;
+    padding:0;
+    border:1px solid #42586d;
+    background:transparent;
+    color:#fff;
+    font-size:20px;
+  }
+  .nav-backdrop{
+    position:fixed;
+    z-index:45;
+    inset:0;
+    background:rgba(6,19,31,.56);
+  }
+  body.nav-open .nav-backdrop{display:block}
+  .shell{margin-left:0;padding:0 16px 28px}
+  .topbar{margin:0 -16px 16px;padding:0 16px;gap:10px}
+  .topbar h1{font-size:21px}
+  .topbar-brand{display:block;color:var(--navy);font-size:11px;font-weight:760;letter-spacing:.05em}
+  .topbar-context{display:none}
+  .menu-toggle{display:grid;place-items:center;width:38px;min-width:38px;padding:0;background:#fff;color:var(--navy);border-color:#bdc9d5}
+  .topbar-left{display:flex;align-items:center;gap:10px}
+  .safety-state{display:none}
+  .stats,.backup-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid,.backup-layout{grid-template-columns:1fr}
+  .dashboard-grid>aside{order:-1}
+  .screen-head{display:none}
+}
+@media(max-width:590px){
+  .topbar-actions{gap:7px}
+  .topbar #primaryNewJob{padding-inline:10px;font-size:11.5px;white-space:nowrap}
+  .stats{gap:8px}
+  .stat{min-height:100px;padding:14px}
+  .stat strong{font-size:23px}
+  .panel{padding:15px}
+  .panel-head{margin:-15px -15px 0;padding:14px 15px}
+  .table-wrap{margin:0 -15px -15px}
+  .work-table thead{display:none}
+  .work-table,.work-table tbody,.work-table tr,.work-table td{display:block;width:100%}
+  .work-table tr{position:relative;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .work-table tr:last-child{border-bottom:0}
+  .work-table td{padding:3px 80px 3px 0;border:0}
+  .work-table td::before{content:attr(data-label);display:inline;margin-right:6px;color:#7a8794;font-size:10.5px}
+  .work-table td:first-child{padding-right:0}
+  .work-table td:first-child::before{display:none}
+  .work-table td:last-child{position:static;margin-top:7px;padding:0;text-align:right}
+  .finance-strip{grid-template-columns:1fr 1fr}
+  .finance-item{padding:10px 12px}
+  .finance-item strong{font-size:18px}
+  .formgrid{grid-template-columns:1fr}
+  .field.wide{grid-column:auto}
+  .line{grid-template-columns:1fr 72px}
+  .line .price{grid-column:1/2}
+  .line button{grid-column:2/3}
+  .backup-actions{grid-template-columns:1fr}
+  .item{align-items:flex-start}
+  .item>.toolbar{width:100%}
+  .item>.toolbar button{flex:1}
+}
+@media(max-width:360px){
+  .topbar .primary-label{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+@media print{
+  body{background:#fff}
+  header,.tabs,.shell,#dlg,.nav-backdrop{display:none!important}
+  #printarea{display:block!important;padding:22mm;color:#222;font:14px Arial,sans-serif}
+  #printarea table{display:table;width:100%;border-collapse:collapse}
+  #printarea tr{display:table-row}
+  #printarea td,#printarea th{display:table-cell;padding:9px;border-bottom:1px solid #ddd;text-align:left}
+  #printarea .right{text-align:right}
+}
+
+</style><meta name="robots" content="noindex,nofollow"><meta name="description" content="NEXO BUSINESS V2.0 - demo independiente, solo datos ficticios"></head><body><div style="background:#fff4dc;color:#553b0d;font:600 14px/1.4 Segoe UI,Arial,sans-serif;padding:12px 16px;border-bottom:2px solid #e5c77e;text-align:center">NEXO BUSINESS · DEMO PARA EVALUACIÓN · Utiliza únicamente datos inventados. Sin servidor, cuentas ni sincronización. No apta todavía para actividad comercial.</div><header><div><div class="brand">NEXO <span>BUSINESS</span></div><div class="small headsmall">V2.0 · Gestión local</div></div><div class="toolbar"><button class="secondary" id="export">Copia de seguridad</button><button class="secondary" id="exportCsv">Informe CSV</button><button class="secondary" id="paymentsCsv">Historial cobros CSV</button><button class="secondary" id="verifyBackup">Verificar copia</button><button class="secondary" id="importBtn">Restaurar copia</button><input class="hide" type="file" id="importFile" accept="application/json,.json"></div></header><main class="shell"><div class="note"><b>Versión local:</b> los datos permanecen en este navegador y dispositivo. No se sincronizan. Guarda copias JSON periódicas. Úsala con datos ficticios hasta revisar privacidad, seguridad y obligaciones legales. Los presupuestos no son facturas.</div><nav class="tabs"><button class="active" data-tab="inicio">Resumen</button><button data-tab="clientes">Clientes</button><button data-tab="trabajos">Trabajos y seguimiento</button><button data-tab="presupuestos">Presupuestos</button><button data-tab="cobros">Cobros</button><button data-tab="ajustes">Configuración</button></nav>
+<section class="screen active" id="inicio"><div class="stats"><div class="stat"><label>Clientes</label><strong id="kClients">0</strong></div><div class="stat"><label>Trabajos pendientes</label><strong id="kJobs">0</strong></div><div class="stat"><label>Necesitan seguimiento</label><strong id="kDue">0</strong></div><div class="stat"><label>Presupuestos pendientes (€)</label><strong id="kValue">0 €</strong></div></div><div class="panel widepanel"><h2>Estado económico de trabajos aceptados</h2><div class="stats" style="margin-bottom:0"><div class="stat"><label>Importe de trabajos</label><strong id="dashTotal">0 €</strong></div><div class="stat"><label>Cobrado neto registrado</label><strong id="dashPaid">0 €</strong></div><div class="stat"><label>Pendiente estimado</label><strong id="dashPending">0 €</strong></div><div class="stat"><label>Trabajos realizados</label><strong id="dashFinished">0</strong></div></div><p class="small">Importes de prueba, no ingresos bancarios verificados. Los ajustes y saldos heredados se contabilizan como registrados, no como pagos comprobados.</p></div><div class="panel widepanel" id="v19Panel"><h2>Centro de control</h2><div class="stats"><div class="stat"><label>Trabajos aceptados en curso</label><strong id="v19Active">0</strong></div><div class="stat"><label>Cobros de pagos explícitos</label><strong id="v19Explicit">0 €</strong></div><div class="stat"><label>Presupuestos guardados</label><strong id="v19Quotes">0</strong></div><div class="stat"><label>Integridad de datos</label><strong id="v19Integrity">Sin comprobar</strong></div></div><div class="toolbar"><button class="secondary" id="v19Check">Comprobar datos</button><button class="secondary" id="v19BackupHelp">Estado de respaldos</button></div><p class="small" id="v19BackupStatus">La copia JSON requiere guardado manual.</p></div><div class="panel widepanel" id="focusBox"><h2>Qué necesita atención</h2><div id="focusText" class="muted">Revisando oportunidades...</div><div class="toolbar" style="margin-top:12px"><button class="secondary" id="showDue">Ver seguimientos pendientes</button><button class="secondary" id="backupReminder">Cómo proteger mis datos</button></div></div><div class="grid"><div class="panel"><h2>Prioridades de hoy</h2><div id="priority" class="list"></div></div><div class="panel"><h2>Acciones rápidas</h2><div class="toolbar"><button onclick="tab('clientes');document.getElementById('clientName').focus()">+ Cliente</button><button onclick="tab('trabajos');document.getElementById('jobTitle').focus()">+ Trabajo</button><button onclick="tab('presupuestos')">+ Presupuesto</button></div><p class="muted" style="font-size:13px">Registra un cliente, crea un trabajo y fija cuándo hacer seguimiento. Las prioridades aparecen automáticamente en este panel.</p></div></div></section>
+<section class="screen" id="clientes"><div class="grid"><div class="panel"><h2>Nuevo cliente</h2><form id="clientForm" class="formgrid"><div class="field"><label>Nombre *</label><input id="clientName" required maxlength="100"></div><div class="field"><label>Teléfono</label><input id="clientPhone" maxlength="40"></div><div class="field wide"><label>Correo electrónico</label><input id="clientEmail" type="email" maxlength="180"></div><div class="field wide"><label>Dirección / notas</label><textarea id="clientNotes" maxlength="1000"></textarea></div><button type="submit">Guardar cliente</button></form></div><div class="panel"><h2>Listado de clientes</h2><input id="clientSearch" placeholder="Buscar cliente..." aria-label="Buscar cliente"><div id="clientList" class="list" style="margin-top:12px"></div></div></div></section>
+<section class="screen" id="trabajos"><div class="grid"><div class="panel"><h2>Registrar trabajo u oportunidad</h2><form id="jobForm" class="formgrid"><div class="field wide"><label>Descripción *</label><input id="jobTitle" required maxlength="160" placeholder="Ej.: Reparación de termo"></div><div class="field"><label>Cliente *</label><select id="jobClient" required></select></div><div class="field"><label>Estado</label><select id="jobStatus"><option value="nuevo">Nuevo</option><option value="presupuestado">Presupuestado</option><option value="aceptado">Aceptado</option><option value="en_curso">En curso</option><option value="realizado">Realizado</option><option value="perdido">Perdido</option></select></div><div class="field"><label>Importe estimado (€)</label><input id="jobAmount" type="number" min="0" max="99999999" step="0.01" value="0"></div><div class="field"><label>Próximo seguimiento</label><input id="jobDue" type="date"></div><div class="field wide"><label>Notas</label><textarea id="jobNotes" maxlength="2000"></textarea></div><button type="submit">Guardar trabajo</button></form></div><div class="panel"><h2>Seguimiento</h2><select id="jobFilter"><option value="abiertos">Abiertos</option><option value="todos">Todos</option><option value="vencidos">Necesitan seguimiento</option><option value="realizado">Realizados</option><option value="perdido">Perdidos</option></select><div id="jobList" class="list" style="margin-top:12px"></div></div></div></section>
+<section class="screen" id="presupuestos"><div class="grid"><div class="panel"><h2>Preparar presupuesto</h2><div class="formgrid"><div class="field wide"><label>Cliente *</label><select id="quoteClient"></select></div><div class="field wide"><label>Concepto general</label><input id="quoteTitle" value="Trabajo de mantenimiento" maxlength="140"></div><div class="field wide"><label>Partidas</label><div id="lines" class="lines"></div><button class="secondary" id="addLine" type="button">+ Añadir partida</button></div><div class="field"><label>IVA (%)</label><input type="number" min="0" max="100" step="0.01" id="vat" value="21"></div><div class="field"><label>Validez / condiciones</label><input id="terms" value="Validez: 15 días. Sujeto a aceptación." maxlength="300"></div></div><div id="quoteSum" class="quoteSum">Total: 0,00 €</div><div class="toolbar"><button id="saveQuote">Guardar presupuesto</button><button class="secondary" id="printDraft">Imprimir borrador / PDF</button></div><p class="small">No emite facturas ni garantiza cumplimiento fiscal. Revisa tipos de IVA y datos obligatorios antes de usar presupuestos profesionalmente.</p></div><div class="panel"><h2>Presupuestos guardados</h2><p class="small"><b>Para convertir:</b> guarda un presupuesto, busca su tarjeta aquí abajo y pulsa «Convertir a trabajo». Después entra en «Cobros» para registrar un pago. Si el presupuesto está en otra versión, exporta allí una copia JSON e impórtala aquí.</p><div id="quoteList" class="list"></div></div></div></section>
+<section class="screen" id="cobros"><div class="panel"><h2>Control de cobros de trabajos</h2><p class="small"><b>Cómo usar:</b> primero convierte un presupuesto guardado a trabajo desde la pestaña Presupuestos. Los trabajos aceptados aparecerán aquí. </p><p class="small">Los importes cobrados solo deben registrarse cuando se haya recibido dinero. La conversión de presupuesto a trabajo NO registra pagos. Si ves un cobro incorrecto de pruebas anteriores, usa «Corregir cobro».</p><div class="stats"><div class="stat"><label>Total de trabajos aceptados o realizados</label><strong id="billableAmount">0 €</strong></div><div class="stat"><label>Cobrado registrado</label><strong id="paidAmount">0 €</strong></div><div class="stat"><label>Pendiente estimado</label><strong id="unpaidAmount">0 €</strong></div></div><p class="small"><b>Historial:</b> Cada cobro nuevo tendrá fecha y método. Los saldos de V1.4 aparecerán como «Saldo heredado sin desglose» hasta que los revises. Los ajustes también quedarán registrados.</p><div class="stats"><div class="stat"><label>Pagos explícitos registrados</label><strong id="realPayments">0 €</strong></div><div class="stat"><label>Ajustes netos</label><strong id="adjustmentTotal">0 €</strong></div><div class="stat"><label>Saldos heredados netos</label><strong id="legacyTotal">0 €</strong></div></div><p class="small">Los pagos son anotaciones de prueba, no están verificados con el banco. Los ajustes pueden modificar el saldo contable sin representar dinero recibido.</p><div id="collectionList" class="list"></div></div></section><section class="screen" id="ajustes"><div class="panel"><h2>Datos del negocio (solo para cabecera de presupuestos)</h2><form class="formgrid" id="settingsForm"><div class="field"><label>Nombre comercial</label><input id="bizName" maxlength="140"></div><div class="field"><label>NIF / CIF</label><input id="bizTax" maxlength="40"></div><div class="field"><label>Contacto</label><input id="bizContact" maxlength="140"></div><div class="field"><label>Dirección</label><input id="bizAddress" maxlength="200"></div><button>Guardar ajustes</button></form><hr style="border:0;border-top:1px solid #eee;margin:20px 0"><h2>Datos de demostración</h2><div class="toolbar"><button class="secondary" id="demo">Cargar ejemplo ficticio</button><button class="danger" id="wipe">Borrar todos los datos</button></div><p class="small">Borrar elimina la información guardada en este navegador. Exporta antes una copia.</p></div></section><p class="foot">NEXO BUSINESS · Prototipo funcional local sin servidor · Sin registro de usuarios, permisos, cifrado en reposo ni sincronización · No apto aún para información sensible ni uso comercial.</p></main><div id="printarea"></div><dialog id="dlg"><h2 id="dlgTitle"></h2><div id="dlgBody"></div><div class="toolbar" style="margin-top:18px;justify-content:flex-end"><button class="secondary" onclick="document.getElementById('dlg').close()">Cerrar</button></div></dialog>
+<script id="nexo-v20-compat">if(typeof globalThis.structuredClone!=="function"){globalThis.structuredClone=function(value){return JSON.parse(JSON.stringify(value));};}</script><script>
+'use strict';const KEY='nexo-business-demo-v20-public-20261011', today=()=>new Date().toLocaleDateString('en-CA');const uuid=()=>crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random();const money=n=>Number(n||0).toLocaleString('es-ES',{style:'currency',currency:'EUR'});const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const empty={clients:[],jobs:[],quotes:[],settings:{}};let data;try{data=JSON.parse(localStorage.getItem(KEY))||structuredClone(empty)}catch{data=structuredClone(empty)}function valid(d){return d&&Array.isArray(d.clients)&&Array.isArray(d.jobs)&&Array.isArray(d.quotes)&&d.settings&&typeof d.settings==='object'&&d.clients.length<10000&&d.jobs.length<50000&&d.quotes.length<50000}if(!valid(data))data=structuredClone(empty);function persist(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){alert('No se ha podido guardar. Exporta una copia y comprueba el espacio del navegador.')}}function clientName(id){return data.clients.find(c=>c.id===id)?.name||'Cliente eliminado'}function opened(j){return !['realizado','perdido'].includes(j.status)}function due(j){return opened(j)&&j.due&&j.due<=today()}function statusLabel(s){return {nuevo:'Nuevo',presupuestado:'Presupuestado',aceptado:'Aceptado',en_curso:'En curso',realizado:'Realizado',perdido:'Perdido'}[s]||s}function el(id){return document.getElementById(id)}function tab(t){document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===t));document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));render()}document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));function options(){let s='<option value="">Selecciona cliente...</option>'+data.clients.map(c=>`<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}</option>`).join('');for(let id of ['jobClient','quoteClient']){let old=el(id).value;el(id).innerHTML=s;el(id).value=old}}function render(){options();el('kClients').textContent=data.clients.length;el('kJobs').textContent=data.jobs.filter(opened).length;el('kDue').textContent=data.jobs.filter(due).length;el('kValue').textContent=money(data.jobs.filter(j=>opened(j)&&j.status==='presupuestado').reduce((a,j)=>a+Number(j.amount||0),0));let priorities=data.jobs.filter(due).sort((a,b)=>a.due.localeCompare(b.due));el('priority').innerHTML=priorities.length?priorities.map(j=>jobHTML(j)).join(''):'<div class="empty">No hay seguimientos vencidos. Añade un trabajo con una fecha para verlo aquí.</div>';let q=el('clientSearch').value.toLowerCase();let clients=data.clients.filter(c=>(c.name+' '+c.phone+' '+c.email).toLowerCase().includes(q));el('clientList').innerHTML=clients.length?clients.map(c=>`<div class="item"><div><h3>${escapeHtml(c.name)}</h3><p>${escapeHtml(c.phone||'Sin teléfono')} · ${escapeHtml(c.email||'Sin correo')}</p><p>${escapeHtml(c.notes||'')}</p></div><div class="toolbar"><button class="secondary" onclick="editClient('${c.id}')">Editar</button><button class="danger" onclick="removeClient('${c.id}')">Eliminar</button></div></div>`).join(''):'<div class="empty">No hay clientes que mostrar.</div>';let filter=el('jobFilter').value;let jobs=data.jobs.filter(j=>filter==='todos'||(filter==='abiertos'&&opened(j))||(filter==='vencidos'&&due(j))||j.status===filter).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));el('jobList').innerHTML=jobs.length?jobs.map(jobHTML).join(''):'<div class="empty">No hay trabajos para este filtro.</div>';el('quoteList').innerHTML=data.quotes.length?data.quotes.slice().reverse().map(q=>`<div class="item"><div><h3>${escapeHtml(q.number)} · ${escapeHtml(clientName(q.client))}</h3><p>${escapeHtml(q.title)} · ${money(total(q).sum)} · ${escapeHtml(q.date)}</p></div><div class="toolbar"><button class="secondary" onclick="printQuote('${q.id}')">Imprimir / PDF</button><button title="Crear orden de trabajo y abrir cobros" onclick="quoteToJob('${q.id}')">Convertir a trabajo</button><button class="danger" onclick="removeQuote('${q.id}')">Eliminar</button></div></div>`).join(''):'<div class="empty">Aún no has creado presupuestos.</div>';if(!document.activeElement||!['bizName','bizTax','bizContact','bizAddress'].includes(document.activeElement.id)){for(const k of ['Name','Tax','Contact','Address'])el('biz'+k).value=data.settings[k.toLowerCase()]||''}}function jobHTML(j){return `<div class="item"><div><h3>${escapeHtml(j.title)}</h3><p>${escapeHtml(clientName(j.client))} · ${money(j.amount)} · <span class="pill ${due(j)?'hot':j.status==='realizado'?'done':''}">${escapeHtml(statusLabel(j.status))}</span></p><p>${j.due?'Seguimiento: '+escapeHtml(j.due):'Sin fecha de seguimiento'} ${due(j)?'Atención: Requiere atención':''}</p></div><div class="toolbar"><button class="secondary" onclick="editJob('${j.id}')">Editar</button><button class="danger" onclick="removeJob('${j.id}')">Eliminar</button></div></div>`}el('clientSearch').oninput=render;el('jobFilter').onchange=render;el('clientForm').onsubmit=e=>{e.preventDefault();data.clients.push({id:uuid(),name:el('clientName').value.trim(),phone:el('clientPhone').value.trim(),email:el('clientEmail').value.trim(),notes:el('clientNotes').value.trim()});persist();e.target.reset();render()};el('jobForm').onsubmit=e=>{e.preventDefault();if(!el('jobClient').value)return alert('Primero crea un cliente.');data.jobs.push({id:uuid(),title:el('jobTitle').value.trim(),client:el('jobClient').value,status:el('jobStatus').value,amount:Number(el('jobAmount').value)||0,due:el('jobDue').value,notes:el('jobNotes').value.trim()});persist();e.target.reset();render()};function removeClient(id){if(data.jobs.some(j=>j.client===id)||data.quotes.some(q=>q.client===id))return alert('Primero elimina los trabajos y presupuestos asociados.');if(confirm('¿Eliminar este cliente?')){data.clients=data.clients.filter(c=>c.id!==id);persist();render()}}function removeJob(id){if(confirm('¿Eliminar este trabajo?')){data.jobs=data.jobs.filter(j=>j.id!==id);persist();render()}}function removeQuote(id){if(confirm('¿Eliminar este presupuesto?')){data.quotes=data.quotes.filter(q=>q.id!==id);persist();render()}}function show(title,html){el('dlgTitle').textContent=title;el('dlgBody').innerHTML=html;el('dlg').showModal()}function editClient(id){let c=data.clients.find(x=>x.id===id);if(!c)return;show('Editar cliente',`<form id="editForm" class="formgrid"><div class="field wide"><label>Nombre</label><input name="name" required maxlength="100" value="${escapeHtml(c.name)}"></div><div class="field"><label>Teléfono</label><input name="phone" maxlength="40" value="${escapeHtml(c.phone)}"></div><div class="field"><label>Email</label><input type="email" name="email" maxlength="180" value="${escapeHtml(c.email)}"></div><div class="field wide"><label>Dirección / notas</label><textarea name="notes" maxlength="1000">${escapeHtml(c.notes)}</textarea></div><button>Guardar cambios</button></form>`);el('editForm').onsubmit=e=>{e.preventDefault();for(const key of ['name','phone','email','notes'])c[key]=e.target.elements[key].value.trim();persist();el('dlg').close();render()}}function editJob(id){let j=data.jobs.find(x=>x.id===id);if(!j)return;show('Editar trabajo',`<form id="editForm" class="formgrid"><div class="field wide"><label>Descripción</label><input name="title" required maxlength="160" value="${escapeHtml(j.title)}"></div><div class="field"><label>Estado</label><select name="status">${['nuevo','presupuestado','aceptado','en_curso','realizado','perdido'].map(s=>`<option value="${s}" ${j.status===s?'selected':''}>${statusLabel(s)}</option>`).join('')}</select></div><div class="field"><label>Importe estimado</label><input name="amount" type="number" min="0" step="0.01" max="99999999" value="${Number(j.amount)}"></div><div class="field wide"><label>Próximo seguimiento</label><input name="due" type="date" value="${escapeHtml(j.due)}"></div><div class="field wide"><label>Notas</label><textarea name="notes" maxlength="2000">${escapeHtml(j.notes)}</textarea></div><button>Guardar cambios</button></form>`);el('editForm').onsubmit=e=>{e.preventDefault();for(const key of ['title','status','due','notes'])j[key]=e.target.elements[key].value;j.amount=Number(e.target.elements.amount.value)||0;persist();el('dlg').close();render()}}
+function addLine(desc='',qty=1,price=0){let div=document.createElement('div');div.className='line';div.innerHTML=`<input class="desc" placeholder="Descripción" aria-label="Descripción de partida" maxlength="150" value="${escapeHtml(desc)}"><input class="qty" aria-label="Cantidad" type="number" min="0.01" max="999999" step="0.01" value="${qty}"><input class="price" aria-label="Precio unitario" type="number" min="0" max="99999999" step="0.01" value="${price}"><button class="danger" type="button" aria-label="Quitar partida">×</button>`;div.querySelector('button').onclick=()=>{div.remove();calcDraft()};div.querySelectorAll('input').forEach(x=>x.oninput=calcDraft);el('lines').append(div);calcDraft()}function draft(){return [...el('lines').children].map(row=>({desc:row.querySelector('.desc').value.trim(),qty:Number(row.querySelector('.qty').value),price:Number(row.querySelector('.price').value)})).filter(x=>x.desc&&x.qty>0&&x.price>=0)}function total(q){let subtotal=q.lines.reduce((s,l)=>s+l.qty*l.price,0),tax=subtotal*(Number(q.vat)/100);return{subtotal,tax,sum:subtotal+tax}}function calcDraft(){let q={lines:draft(),vat:Number(el('vat').value)||0};el('quoteSum').textContent='Total: '+money(total(q).sum)}el('addLine').onclick=()=>addLine();el('vat').oninput=calcDraft;addLine('Mano de obra',1,0);function prepareDraft(){if(!el('quoteClient').value)throw Error('Selecciona un cliente.');let lines=draft();if(!lines.length)throw Error('Añade al menos una partida con descripción.');return {id:uuid(),number:'PRE-'+new Date().getFullYear()+'-'+String(data.quotes.length+1).padStart(4,'0'),date:today(),client:el('quoteClient').value,title:el('quoteTitle').value.trim()||'Presupuesto',lines,vat:Math.min(100,Math.max(0,Number(el('vat').value)||0)),terms:el('terms').value.trim()}}el('saveQuote').onclick=()=>{try{let q=prepareDraft();data.quotes.push(q);persist();render();alert('Presupuesto guardado: '+q.number)}catch(e){alert(e.message)}};el('printDraft').onclick=()=>{try{printDocument(prepareDraft(),true)}catch(e){alert(e.message)}};function printQuote(id){let q=data.quotes.find(x=>x.id===id);if(q)printDocument(q,false)}function printDocument(q,isDraft){let c=data.clients.find(x=>x.id===q.client)||{},b=data.settings,t=total(q);el('printarea').innerHTML=`<h1>${escapeHtml(b.name||'NEXO BUSINESS')}</h1><p>${escapeHtml(b.tax||'')} ${escapeHtml(b.address||'')}<br>${escapeHtml(b.contact||'')}</p><hr><h2>${isDraft?'BORRADOR · ':''}PRESUPUESTO ${escapeHtml(q.number)}</h2><p><b>Fecha:</b> ${escapeHtml(q.date)}<br><b>Cliente:</b> ${escapeHtml(c.name||'')}<br>${escapeHtml(c.notes||'')}<br><b>Descripción:</b> ${escapeHtml(q.title)}</p><table><thead><tr><th>Concepto</th><th>Cantidad</th><th>Precio unitario</th><th class="right">Importe</th></tr></thead><tbody>${q.lines.map(l=>`<tr><td>${escapeHtml(l.desc)}</td><td>${l.qty}</td><td>${money(l.price)}</td><td class="right">${money(l.qty*l.price)}</td></tr>`).join('')}</tbody></table><p class="right">Base: ${money(t.subtotal)}<br>IVA (${q.vat}%): ${money(t.tax)}</p><h2 class="right">TOTAL: ${money(t.sum)}</h2><p>${escapeHtml(q.terms)}</p><p style="margin-top:55px;font-size:11px;color:#666">Documento presupuestario no fiscal. No constituye factura.</p>`;window.print()};el('settingsForm').onsubmit=e=>{e.preventDefault();for(let k of ['Name','Tax','Contact','Address'])data.settings[k.toLowerCase()]=el('biz'+k).value.trim();persist();alert('Datos guardados')};el('export').onclick=()=>{let blob=new Blob([JSON.stringify({app:'NEXO BUSINESS',version:1,exportedAt:new Date().toISOString(),data},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='nexo-copia-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)};el('importBtn').onclick=()=>el('importFile').click();el('importFile').onchange=async e=>{let file=e.target.files[0];if(!file)return;try{if(file.size>5000000)throw Error('Archivo demasiado grande');let imported=JSON.parse(await file.text());if(imported.app!=='NEXO BUSINESS'||!valid(imported.data))throw Error('Copia no válida');let problems=auditData(imported.data);if(problems.length)throw Error('Inconsistencias en copia: '+problems.slice(0,4).join('; '));if(!confirm('Esta operación sustituye TODOS los datos locales actuales. ¿Continuar? Guarda una copia antes.'))return;const previous=data;data=imported.data;try{localStorage.setItem(KEY,JSON.stringify(data))}catch(saveError){data=previous;throw Error('No se pudo guardar la restauración')}render();alert('Copia restaurada y estructura verificada')}catch(err){alert('No se pudo importar: '+err.message)}finally{e.target.value=''}};el('demo').onclick=()=>{if(!confirm('¿Añadir dos clientes y trabajos ficticios?'))return;let a=uuid(),b=uuid();data.clients.push({id:a,name:'María López (EJEMPLO)',phone:'',email:'',notes:'Cliente ficticio, Madrid'},{id:b,name:'Comunidad Sol (EJEMPLO)',phone:'',email:'',notes:'Datos ficticios'});data.jobs.push({id:uuid(),title:'Revisión de caldera (EJEMPLO)',client:a,status:'presupuestado',amount:220,due:today(),notes:'Llamar para confirmar presupuesto'},{id:uuid(),title:'Reparación de fuga (EJEMPLO)',client:b,status:'nuevo',amount:150,due:today(),notes:'Pendiente de visita'});persist();render()};el('wipe').onclick=()=>{if(confirm('¿Seguro? Se borrará TODO sin recuperación salvo copia JSON.')&&confirm('Confirmar borrado definitivo')){data=structuredClone(empty);persist();render()}};
+// NEXO v1.1: exports read-only, actions clearly separated from the stored data.
+function csvEscape(value){if(typeof value==="number" && Number.isFinite(value))return "\""+String(value)+"\"";return '"'+String(value??'').replace(/"/g,'""').replace(/^([=+@\-\t\r])/, '\'$1')+'"'}
+function downloadCsv(filename,rows){let csv='\ufeff'+rows.map(r=>r.map(csvEscape).join(';')).join('\r\n');let blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+el('exportCsv').onclick=()=>{let rows=[['Tipo','Cliente','Trabajo','Estado','Importe estimado EUR','Seguimiento','Telefono'],...data.jobs.map(j=>{let c=data.clients.find(c=>c.id===j.client)||{};return ['Trabajo',c.name||'',j.title,j.status,j.amount,j.due||'',c.phone||'']}),...data.clients.filter(c=>!data.jobs.some(j=>j.client===c.id)).map(c=>['Cliente',c.name,'','','','',c.phone||''])];downloadCsv('nexo-informe-'+today()+'.csv',rows)};
+el('showDue').onclick=()=>{tab('trabajos');el('jobFilter').value='vencidos';render()};
+el('backupReminder').onclick=()=>alert('Los datos SOLO están en este navegador. Pulsa «Copia de seguridad» y conserva el archivo JSON en un lugar seguro. Si borras datos del navegador o cambias de equipo, podrían perderse. No introduzcas datos reales de clientes en esta versión de prueba.');
+function renderFocus(){let needs=data.jobs.filter(due).sort((a,b)=>(a.due||'').localeCompare(b.due||''));let open=data.jobs.filter(j=>!['realizado','perdido'].includes(j.status));el('focusText').textContent=needs.length?`Hay ${needs.length} trabajo(s) con seguimiento pendiente. Primero: ${needs[0].title} (${clientName(needs[0].client)}).`:`No hay seguimientos vencidos. Tienes ${open.length} trabajo(s) abiertos.`}
+const oldPersistedRender=render;render=function(){oldPersistedRender();renderFocus()};
+
+// V1.5: libro de movimientos local. Importes antiguos se conservan como saldo heredado sin prueba documental.
+function eligibleJobs(){return data.jobs.filter(j=>['aceptado','en_curso','realizado'].includes(j.status))}
+function cents(n){return Math.round((Number(n)||0)*100)}
+function fromCents(n){return Math.round(n)/100}
+function paymentsOf(j){return Array.isArray(j.payments)?j.payments:[]}
+function paid(j){return Array.isArray(j.payments)?fromCents(paymentsOf(j).reduce((n,p)=>n+cents(p.amount),0)):Math.max(0,Number(j.paidAmount)||0)}
+function seedHistory(j){if(Array.isArray(j.payments))return;j.payments=[];let old=Math.min(Math.max(0,cents(j.amount)),Math.max(0,cents(j.paidAmount)));if(old>0)j.payments.push({id:uuid(),date:'',method:'sin_desglose',amount:fromCents(old),note:'Saldo de una versión anterior, sin fecha ni método verificados',createdAt:new Date().toISOString()});}
+function methodLabel(m){return {efectivo:'Efectivo',transferencia:'Transferencia',tarjeta:'Tarjeta',bizum:'Bizum',otro:'Otro',ajuste:'Corrección',sin_desglose:'Saldo heredado sin desglose'}[m]||'Otro'}
+function paymentRows(j){return paymentsOf(j).map(p=>`<tr><td>${escapeHtml(p.date||'Sin fecha')}</td><td>${escapeHtml(methodLabel(p.method))}</td><td>${money(p.amount)}</td><td>${escapeHtml(p.note||'')}</td></tr>`).join('')}
+function renderCollections(){
+ const jobs=eligibleJobs();const records=jobs.flatMap(j=>Array.isArray(j.payments)?j.payments:(Number(j.paidAmount)>0?[{method:'sin_desglose',amount:Number(j.paidAmount)}]:[]));
+ const sumType=method=>fromCents(records.filter(p=>p.method===method).reduce((n,p)=>n+cents(p.amount),0));
+ const actual=fromCents(records.filter(p=>!['ajuste','sin_desglose'].includes(p.method)).reduce((n,p)=>n+cents(p.amount),0));
+ el('realPayments').textContent=money(actual);el('adjustmentTotal').textContent=money(sumType('ajuste'));el('legacyTotal').textContent=money(sumType('sin_desglose'));
+ let gross=jobs.reduce((n,j)=>n+cents(j.amount),0),received=jobs.reduce((n,j)=>n+Math.min(Math.max(0,cents(j.amount)),Math.max(0,cents(paid(j)))),0);
+ el('billableAmount').textContent=money(fromCents(gross));el('paidAmount').textContent=money(fromCents(received));el('unpaidAmount').textContent=money(fromCents(Math.max(0,gross-received)));el('dashTotal').textContent=money(fromCents(gross));el('dashPaid').textContent=money(fromCents(received));el('dashPending').textContent=money(fromCents(Math.max(0,gross-received)));el('dashFinished').textContent=jobs.filter(j=>j.status==='realizado').length;
+ el('collectionList').innerHTML=jobs.length?jobs.map(j=>{
+ const amount=Math.max(0,cents(j.amount)),received=Math.max(0,Math.min(amount,cents(paid(j)))),history=paymentsOf(j),legacy=(!Array.isArray(j.payments)&&received>0)||history.some(p=>p.method==='sin_desglose');
+ const legacyGross=history.filter(p=>p.method==='sin_desglose').reduce((n,p)=>n+cents(p.amount),0);
+ const negativeAdjustments=history.filter(p=>p.method==='ajuste'&&cents(p.amount)<0).reduce((n,p)=>n-cents(p.amount),0);
+ const unresolvedLegacy=!Array.isArray(j.payments)?legacy:legacyGross>negativeAdjustments;
+ return `<div class="item" style="display:block"><div class="flex" style="justify-content:space-between"><div><h3>${escapeHtml(j.title)}</h3><p>${escapeHtml(clientName(j.client))} · Estado: ${escapeHtml(statusLabel(j.status))} · ${amount>0&&received>=amount?'Cobrado íntegro':'No cobrado íntegramente'}</p><p><b>Total:</b> ${money(fromCents(amount))} · <b>Cobrado:</b> ${money(fromCents(received))} · <b>Pendiente:</b> ${money(fromCents(amount-received))}</p>${unresolvedLegacy?'<p class="small" style="color:#9a6410">Aviso: Existe un saldo heredado que no está totalmente compensado; revisa su origen.</p>':legacy?'<p class="small" style="color:#157d54">Saldo heredado compensado por ajustes posteriores (conservado en historial).</p>':''}</div><div class="toolbar"><button class="secondary" onclick="recordPayment('${j.id}')" ${amount-received<=0?'disabled':''}>+ Registrar cobro</button><button class="secondary" onclick="correctPayment('${j.id}')">Corregir total</button></div></div><details style="margin-top:12px"><summary>Historial de cobros (${history.length} movimientos${unresolvedLegacy?' · heredado pendiente de revisión':''})</summary><div style="overflow-x:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th>Fecha</th><th>Método</th><th>Importe</th><th>Nota</th></tr></thead><tbody>${history.length?paymentRows(j):legacy?`<tr><td>Sin fecha</td><td>Saldo heredado sin desglose</td><td>${money(fromCents(received))}</td><td>Por verificar</td></tr>`:'<tr><td colspan="4">No hay cobros registrados</td></tr>'}</tbody></table></div></details></div>`
+ }).join(''):'<div class="empty">Los trabajos aceptados, en curso o realizados aparecerán aquí.</div>';
+}
+function recordPayment(id){
+ let j=data.jobs.find(x=>x.id===id);if(!j||!['aceptado','en_curso','realizado'].includes(j.status))return;
+ let outstanding=cents(j.amount)-cents(paid(j));if(outstanding<=0)return alert('Este trabajo figura como totalmente cobrado.');
+ show('Registrar cobro',`<form id="payForm" class="formgrid"><div class="field"><label>Importe recibido (€)</label><input name="amount" type="number" required min="0.01" max="${fromCents(outstanding)}" step="0.01" value="${fromCents(outstanding)}"></div><div class="field"><label>Fecha</label><input name="date" type="date" required value="${today()}"></div><div class="field wide"><label>Método de pago</label><select name="method"><option value="transferencia">Transferencia</option><option value="efectivo">Efectivo</option><option value="tarjeta">Tarjeta</option><option value="bizum">Bizum</option><option value="otro">Otro</option></select></div><div class="field wide"><label>Nota (opcional)</label><input name="note" maxlength="160" placeholder="Referencia o detalle"></div><button>Confirmar cobro ficticio</button></form>`);
+ el('payForm').onsubmit=e=>{e.preventDefault();const f=e.target.elements,amount=cents(f.amount.value),date=f.date.value;if(amount<=0||amount>cents(j.amount)-cents(paid(j))||!/^\d{4}-\d{2}-\d{2}$/.test(date))return alert('Revisa el importe y la fecha.');const duplicate=paymentsOf(j).some(p=>p.method===f.method.value&&p.date===date&&cents(p.amount)===amount);if(duplicate&&!confirm('Aviso: Ya existe un movimiento con esa fecha, importe y método para este trabajo. ¿Registrar otro pago distinto de todas formas?'))return;if(!confirm('Registrar '+money(fromCents(amount))+' con fecha '+date+'?'))return;seedHistory(j);j.payments.push({id:uuid(),date,method:f.method.value,amount:fromCents(amount),note:f.note.value.trim(),createdAt:new Date().toISOString()});j.paidAmount=paid(j);persist();el('dlg').close();render();};
+}
+function correctPayment(id){
+ let j=data.jobs.find(x=>x.id===id);if(!j)return;let old=cents(paid(j)),max=cents(j.amount);
+ let answer=prompt('Total COBRADO correcto (€), entre 0 y '+money(fromCents(max))+'. Actual: '+money(fromCents(old)),String(fromCents(old)));if(answer===null)return;
+ let value=cents(answer.trim().replace(',','.'));if(!Number.isFinite(value)||value<0||value>max||!/^\d+(?:[.,]\d{1,2})?$/.test(answer.trim()))return alert('Introduce un importe válido (máximo dos decimales).');
+ if(value===old)return alert('No hay cambios que guardar.');
+ if(!confirm('Se añadirá al historial una corrección de '+money(fromCents(value-old))+'; no se borrarán los registros anteriores. ¿Continuar?'))return;
+ seedHistory(j);j.payments.push({id:uuid(),date:today(),method:'ajuste',amount:fromCents(value-old),note:'Ajuste manual del total acumulado',createdAt:new Date().toISOString()});j.paidAmount=paid(j);persist();render();
+}
+function quoteToJob(id){let q=data.quotes.find(q=>q.id===id);if(!q)return alert('No se encuentra el presupuesto.');if(data.jobs.some(j=>j.quoteId===id))return alert('Ya tiene trabajo asociado.');if(!confirm('¿Crear trabajo ACEPTADO con 0 € cobrados?'))return;data.jobs.push({id:uuid(),quoteId:id,title:q.title,client:q.client,status:'aceptado',amount:+total(q).sum.toFixed(2),paidAmount:0,payments:[],due:'',notes:'Generado a partir de '+q.number});persist();tab('cobros');alert('Trabajo creado. Pendiente de cobrar: '+money(total(q).sum))}
+el('verifyBackup').onclick=()=>{try{let snapshot=JSON.stringify({app:'NEXO BUSINESS',version:1,data});let parsed=JSON.parse(snapshot);let issues=auditData(parsed.data);if(issues.length)throw Error(issues.slice(0,5).join('; '));if(JSON.stringify(parsed.data)!==JSON.stringify(data))throw Error('no coincide la copia');alert('Verificación local correcta: la copia puede serializarse y leerse conservando los registros. Ahora pulsa «Copia de seguridad» para descargar el JSON y después prueba a restaurarlo en otro navegador con DATOS FICTICIOS. Esta comprobación no garantiza la restauración de archivos externos.');}catch(e){alert('Error de verificación: '+e.message)}};el('paymentsCsv').onclick=()=>{let rows=[['ID trabajo','Trabajo','Cliente','ID movimiento','Fecha','Tipo','Metodo','Importe EUR','Nota']];for(const j of data.jobs){if(!Array.isArray(j.payments)){if(cents(j.paidAmount)>0)rows.push([j.id,j.title,clientName(j.client),'','', 'HEREDADO','Saldo heredado sin desglose',Number(j.paidAmount),'Sin verificar']);continue;}for(const p of j.payments)rows.push([j.id,j.title,clientName(j.client),p.id,p.date||'',p.method==='ajuste'?'AJUSTE':p.method==='sin_desglose'?'HEREDADO':'PAGO',methodLabel(p.method),p.amount,p.note||'']);}downloadCsv('nexo-historial-cobros-'+today()+'.csv',rows)};
+
+function auditData(d){
+ const errors=[];if(!valid(d))return ['Estructura principal inválida'];
+ const uniq=(arr,label)=>{let ids=new Set();for(const x of arr){if(!x||typeof x.id!=='string'||ids.has(x.id))errors.push(label+' con ID inexistente o duplicado');else ids.add(x.id)}return ids};
+ const clients=uniq(d.clients,'Cliente'),quotes=uniq(d.quotes,'Presupuesto');uniq(d.jobs,'Trabajo');
+ for(const q of d.quotes){if(!clients.has(q.client))errors.push('Presupuesto sin cliente');if(!Array.isArray(q.lines))errors.push('Partidas inválidas')}
+ for(const j of d.jobs){if(!clients.has(j.client))errors.push('Trabajo sin cliente');if(j.quoteId&&!quotes.has(j.quoteId))errors.push('Trabajo vinculado a presupuesto inexistente');if(!Number.isFinite(Number(j.amount))||Number(j.amount)<0)errors.push('Importe de trabajo inválido');if(j.payments!==undefined&&!Array.isArray(j.payments))errors.push('Historial inválido');if(Array.isArray(j.payments)){let ids=new Set(),sum=0;for(const p of j.payments){if(!p||typeof p.id!=='string'||ids.has(p.id))errors.push('Movimiento duplicado o inválido');else ids.add(p.id);if(typeof p.amount!=='number'||!Number.isFinite(p.amount)||Math.abs(p.amount)>99999999)errors.push('Importe de movimiento inválido');else sum+=cents(p.amount);
+ if(p.method!=='sin_desglose' && (typeof p.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(p.date)))errors.push('Fecha de movimiento inválida');
+ if(!['ajuste','sin_desglose'].includes(p.method)&&p.amount<=0)errors.push('Pago no positivo');if(!['efectivo','transferencia','tarjeta','bizum','otro','ajuste','sin_desglose'].includes(p.method))errors.push('Método desconocido')}if(sum<0||sum>cents(j.amount))errors.push('Saldo fuera de límites en '+String(j.title||'trabajo'));
+ if(j.paidAmount!==undefined&&cents(j.paidAmount)!==sum)errors.push('Total cobrado distinto del historial en '+String(j.title||'trabajo'));}}
+ return errors;
+}
+
+const originalRenderV15=render;render=function(){originalRenderV15();renderCollections()};render();
+//  audit summary uses the same movement ledger and does not alter records.
+function financialAudit(){
+ const problems=auditData(data),jobs=eligibleJobs();
+ const net=jobs.reduce((a,j)=>a+cents(paid(j)),0);
+ const transactions=jobs.flatMap(j=>paymentsOf(j));
+ const types={payment:0,adjustment:0,legacy:0};
+ for(const p of transactions){const target=p.method==='ajuste'?'adjustment':p.method==='sin_desglose'?'legacy':'payment';types[target]+=cents(p.amount)}
+ const undetailed=jobs.filter(j=>!Array.isArray(j.payments)&&cents(j.paidAmount)>0).reduce((a,j)=>a+cents(j.paidAmount),0);
+ const consistent=transactions.length||undetailed?net===types.payment+types.adjustment+types.legacy+undetailed:true;
+ show('Auditoría de cobros',`<p><b>Saldo registrado:</b> ${money(fromCents(net))}</p><p><b>Pagos explícitos:</b> ${money(fromCents(types.payment))}</p><p><b>Ajustes:</b> ${money(fromCents(types.adjustment))}</p><p><b>Herencia:</b> ${money(fromCents(types.legacy+undetailed))}</p><p><b>Movimientos:</b> ${transactions.length}</p><p><b>Conciliación interna:</b> ${consistent?'Correcta':'REVISAR'}</p><p><b>Validación de datos:</b> ${problems.length?'ERRORES: '+escapeHtml(problems.slice(0,5).join('; ')):'Sin errores detectados'}</p><p class="small">Auditoría local de datos ficticios. No confirma transferencias reales ni sustituye contabilidad profesional.</p>`);
+}
+const auditButton=document.createElement('button');auditButton.className='secondary';auditButton.textContent='Auditar cobros';auditButton.onclick=financialAudit;document.querySelector('header .toolbar').append(auditButton);
+
+
+//  additive interface enhancements; no migration or destructive rewrite of V1.8 storage.
+function v19ClientHistory(id){
+ const c=data.clients.find(x=>x.id===id);if(!c)return;
+ const jobs=data.jobs.filter(j=>j.client===id),quotes=data.quotes.filter(q=>q.client===id);
+ const sum=jobs.filter(j=>['aceptado','en_curso','realizado'].includes(j.status)).reduce((n,j)=>n+cents(j.amount),0);
+ const collected=jobs.filter(j=>['aceptado','en_curso','realizado'].includes(j.status)).reduce((n,j)=>n+cents(paid(j)),0);
+ const jobRows=jobs.length?jobs.map(j=>`<div class="item"><div><b>${escapeHtml(j.title)}</b><p>${escapeHtml(statusLabel(j.status))} · ${money(j.amount)} · Saldo anotado: ${money(paid(j))}</p><p>${escapeHtml(j.notes||'Sin notas')}</p></div></div>`).join(''):'<p class="muted">Sin trabajos registrados.</p>';
+ const quoteRows=quotes.length?quotes.map(q=>`<div class="item"><div><b>${escapeHtml(q.number)}</b><p>${escapeHtml(q.title)} · ${money(total(q).sum)} · ${escapeHtml(q.date)}</p></div></div>`).join(''):'<p class="muted">Sin presupuestos registrados.</p>';
+ show('Historial de '+c.name,`<p><b>Cliente:</b> ${escapeHtml(c.name)} · ${escapeHtml(c.phone||'Sin teléfono')}</p><p><b>Trabajos aceptados:</b> ${money(fromCents(sum))} · <b>Saldo neto registrado:</b> ${money(fromCents(collected))}</p><p class="small">Importes de prueba, no transferencias verificadas.</p><h3>Trabajos (${jobs.length})</h3>${jobRows}<h3>Presupuestos (${quotes.length})</h3>${quoteRows}`);
+}
+function v19Render(){
+ el('v19Active').textContent=data.jobs.filter(j=>['aceptado','en_curso'].includes(j.status)).length;
+ el('v19Quotes').textContent=data.quotes.length;
+ const jobs=eligibleJobs(),payments=jobs.flatMap(j=>paymentsOf(j));
+ el('v19Explicit').textContent=money(fromCents(payments.filter(p=>!['sin_desglose','ajuste'].includes(p.method)).reduce((n,p)=>n+cents(p.amount),0)));
+ const errors=auditData(data);el('v19Integrity').textContent=errors.length?`${errors.length} aviso(s)`:'Correcta';
+ const timestamp=localStorage.getItem('nexo-v19-last-export');
+ el('v19BackupStatus').textContent=timestamp?'Última descarga JSON iniciada desde este navegador: '+new Date(timestamp).toLocaleString('es-ES')+'. Verifica que el archivo existe y consérvalo en otro lugar.':'Aún no consta una descarga JSON desde esta versión en este navegador. Guarda una copia externa.';
+ const list=el('clientList');for(const item of list.querySelectorAll('.item')){
+  const edit=item.querySelector('button[onclick^="editClient("]');if(!edit)continue;
+  const match=edit.getAttribute('onclick').match(/^editClient\('([^']+)'\)$/);if(!match)continue;
+  const toolbar=edit.parentElement;
+  const b=document.createElement('button');b.className='secondary';b.textContent='Historial';b.onclick=()=>v19ClientHistory(match[1]);toolbar.insertBefore(b,edit);
+ }
+}
+const v19PreviousRender=render;render=function(){v19PreviousRender();v19Render()};
+el('v19Check').onclick=()=>{const issues=auditData(data);alert(issues.length?'Se detectaron incidencias: '+issues.slice(0,10).join('; '):'Estructura, relaciones y cobros: comprobación interna correcta. No verifica operaciones bancarias reales.')};
+el('v19BackupHelp').onclick=()=>alert('La aplicación funciona sin servidor y solo conserva datos en este navegador. Descarga la copia JSON y guárdala en otra ubicación. La fecha indica que se inició la descarga, no que el archivo esté a salvo. Antes de restaurar, descarga el estado actual.');
+el('export').addEventListener('click',()=>{try{localStorage.setItem('nexo-v19-last-export',new Date().toISOString())}catch(e){};v19Render()});
+render();
+</script><script id="nexo-v20-upgrade">
+(() => {
+  'use strict';
+
+  const SNAP_KEY = 'nexo-business-local-v2-snapshots';
+  const EXPORT_KEY = 'nexo-v20-last-export';
+  const PAGE_TITLES = {
+    inicio: ['Resumen', 'Situación general del negocio'],
+    clientes: ['Clientes', 'Contactos e historial de actividad'],
+    trabajos: ['Trabajos', 'Oportunidades, ejecución y seguimiento'],
+    presupuestos: ['Presupuestos', 'Preparación y conversión a trabajo'],
+    cobros: ['Cobros', 'Movimientos registrados por trabajo'],
+    respaldos: ['Respaldos', 'Protección, verificación y recuperación local'],
+    ajustes: ['Configuración', 'Datos del negocio y entorno de prueba']
+  };
+
+  const iconPaths = {
+    inicio: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/>',
+    clientes: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+    trabajos: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/>',
+    presupuestos: '<path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h8"/>',
+    cobros: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>',
+    respaldos: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
+    ajustes: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3V9.6h.09A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3h4v.09A1.7 1.7 0 0 0 15.4 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.4.28.75.63 1 1 .27.45.4.97.4 1.5v1c0 .53-.13 1.05-.4 1.5Z"/>'
+  };
+
+  const svgIcon = name => '<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24">' + iconPaths[name] + '</svg></span>';
+
+  document.title = 'NEXO BUSINESS 2.0 · Gestión local';
+  document.querySelector('.headsmall').textContent = 'V2.0 · Gestión local';
+  document.querySelector('.brand').innerHTML = 'NEXO <span>BUSINESS</span>';
+
+  const main = document.querySelector('main.shell');
+  const note = main.querySelector('.note');
+  const tabs = main.querySelector('.tabs');
+  const header = document.querySelector('header');
+  const originalHeaderTools = header.querySelector('.toolbar');
+
+  const topbar = document.createElement('div');
+  topbar.className = 'topbar';
+  topbar.innerHTML = `
+    <div class="topbar-left">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir navegación" aria-expanded="false">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div>
+        <div class="topbar-brand">NEXO BUSINESS · V2.0</div>
+        <h1 id="pageTitle">Resumen</h1>
+        <span class="topbar-context" id="pageContext">Situación general del negocio</span>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="safety-state"><span class="safety-dot"></span><span>Datos locales · <span id="topBackupDate">sin exportar</span></span></div>
+      <button id="primaryNewJob" type="button"><span aria-hidden="true">+</span> <span class="primary-label">Nuevo trabajo</span></button>
+    </div>`;
+  main.insertBefore(topbar, note);
+
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'sidebar-close';
+  closeButton.id = 'sidebarClose';
+  closeButton.setAttribute('aria-label', 'Cerrar navegación');
+  closeButton.textContent = '×';
+  header.appendChild(closeButton);
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  backdrop.id = 'navBackdrop';
+  document.body.appendChild(backdrop);
+
+  const overview = el('inicio');
+  overview.innerHTML = `
+    <div class="stats summary-metrics">
+      <div class="stat positive"><label>Trabajos activos</label><strong id="kJobs">0</strong><small id="v2JobsMeta">En seguimiento</small></div>
+      <div class="stat attention"><label>Seguimientos pendientes</label><strong id="kDue">0</strong><small>Requieren atención</small></div>
+      <div class="stat"><label>Presupuestos guardados</label><strong id="v19Quotes">0</strong><small id="v2QuoteMeta">Pendientes de convertir</small></div>
+      <div class="stat"><label>Pendiente de cobro</label><strong id="dashPending">0 €</strong><small>Estimación registrada</small></div>
+    </div>
+    <div class="dashboard-grid">
+      <section class="panel">
+        <div class="panel-head"><div><h2>Trabajos en curso</h2><p>Actividad abierta ordenada por seguimiento</p></div><button class="secondary" id="allJobsBtn" type="button">Ver trabajos</button></div>
+        <div class="table-wrap" id="dashboardJobs"></div>
+      </section>
+      <aside class="panel">
+        <div class="panel-head"><div><h2>Prioridades</h2><p>Seguimientos que vencen antes</p></div><button class="secondary" id="showDue" type="button">Ver todos</button></div>
+        <div class="priority-list" id="priority"></div>
+      </aside>
+    </div>
+    <div class="dashboard-lower">
+      <section class="panel">
+        <div class="panel-head"><div><h2>Resumen financiero</h2><p>Importes anotados en trabajos aceptados</p></div><button class="secondary" id="financeBtn" type="button">Abrir cobros</button></div>
+        <div class="finance-strip">
+          <div class="finance-item"><label>Cobrado neto</label><strong id="dashPaid">0 €</strong><small id="v2PaidMeta">Pagos y ajustes</small></div>
+          <div class="finance-item"><label>Pendiente estimado</label><strong id="v2PendingMirror">0 €</strong><small>Sin conciliación bancaria</small></div>
+          <div class="finance-item"><label>Presupuestos abiertos</label><strong id="kValue">0 €</strong><small>Trabajos presupuestados</small></div>
+          <div class="finance-item"><label>Importe contratado</label><strong id="dashTotal">0 €</strong><small><span id="dashFinished">0</span> realizados · <span id="kClients">0</span> clientes</small></div>
+        </div>
+      </section>
+      <aside class="panel">
+        <div class="panel-head"><div><h2>Estado de respaldos</h2><p>Copias de esta instalación local</p></div></div>
+        <div class="backup-summary">
+          <strong id="v19Integrity">Sin comprobar</strong>
+          <p id="v19BackupStatus">Aún no hay información de respaldo.</p>
+          <div class="toolbar"><button class="secondary" id="v19Check" type="button">Comprobar</button><button class="secondary" id="v19BackupHelp" type="button">Ver respaldos</button></div>
+        </div>
+      </aside>
+    </div>
+    <span class="sr-only" id="v19Active">0</span>
+    <span class="sr-only" id="v19Explicit">0 €</span>
+    <span class="sr-only" id="focusText"></span>
+    <button class="hide" id="backupReminder" type="button">Información</button>`;
+
+  const backupScreen = document.createElement('section');
+  backupScreen.className = 'screen';
+  backupScreen.id = 'respaldos';
+  backupScreen.innerHTML = `
+    <div class="screen-head"><div><h1>Respaldos</h1><p>Protección, verificación y recuperación local</p></div></div>
+    <div class="stats backup-kpis">
+      <div class="stat positive"><label>Copias internas</label><strong id="backupCount">0</strong><small>Máximo 10 versiones</small></div>
+      <div class="stat"><label>Última copia interna</label><strong id="backupLastAuto">—</strong><small>Guardada en este navegador</small></div>
+      <div class="stat"><label>Última exportación</label><strong id="backupLastExport">—</strong><small>Archivo JSON externo</small></div>
+      <div class="stat"><label>Integridad</label><strong id="backupIntegrity">Pendiente</strong><small>Relaciones y cobros</small></div>
+    </div>
+    <div class="backup-layout">
+      <section class="panel">
+        <h2>Acciones de protección</h2>
+        <p class="small">La copia JSON es la protección principal frente a pérdida del navegador o del dispositivo.</p>
+        <div class="backup-actions" id="backupActionHost"></div>
+        <div class="backup-warning">Las copias internas permanecen en este mismo navegador. No sustituyen a una copia JSON guardada en otro lugar.</div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><h2>Historial interno</h2><p>Versiones automáticas rotatorias</p></div><button class="danger" id="clearSnapshots" type="button">Limpiar historial</button></div>
+        <div class="snapshot-list" id="snapshotList"></div>
+      </section>
+    </div>`;
+  const settingsScreen = el('ajustes');
+  main.insertBefore(backupScreen, settingsScreen);
+
+  const backupTab = document.createElement('button');
+  backupTab.type = 'button';
+  backupTab.dataset.tab = 'respaldos';
+  backupTab.textContent = 'Respaldos';
+  const settingsTab = tabs.querySelector('[data-tab="ajustes"]');
+  tabs.insertBefore(backupTab, settingsTab);
+  const divider = document.createElement('div');
+  divider.className = 'nav-divider';
+  tabs.insertBefore(divider, settingsTab);
+
+  const labels = {
+    inicio: 'Resumen',
+    clientes: 'Clientes',
+    trabajos: 'Trabajos',
+    presupuestos: 'Presupuestos',
+    cobros: 'Cobros',
+    respaldos: 'Respaldos',
+    ajustes: 'Configuración'
+  };
+  tabs.querySelectorAll('[data-tab]').forEach(button => {
+    const name = button.dataset.tab;
+    button.innerHTML = svgIcon(name) + '<span>' + labels[name] + '</span>';
+  });
+
+  const screenDescriptions = {
+    clientes: ['Clientes', 'Contactos e historial de actividad'],
+    trabajos: ['Trabajos', 'Oportunidades, ejecución y seguimiento'],
+    presupuestos: ['Presupuestos', 'Preparación y conversión a trabajo'],
+    cobros: ['Cobros', 'Movimientos registrados por trabajo'],
+    ajustes: ['Configuración', 'Datos del negocio y entorno de prueba']
+  };
+  Object.entries(screenDescriptions).forEach(([id, copy]) => {
+    const screen = el(id);
+    const head = document.createElement('div');
+    head.className = 'screen-head';
+    head.innerHTML = '<div><h1>' + copy[0] + '</h1><p>' + copy[1] + '</p></div>';
+    screen.insertBefore(head, screen.firstChild);
+  });
+
+  note.innerHTML = '<b>Entorno local de prueba.</b> Los datos permanecen en este navegador y dispositivo. No hay sincronización, cifrado ni verificación bancaria. Utiliza únicamente información ficticia hasta completar la revisión legal, de privacidad y seguridad.';
+
+  const actionHost = el('backupActionHost');
+  const auditButton = Array.from(originalHeaderTools.querySelectorAll('button')).find(button => button.textContent.includes('Auditar'));
+  [
+    [el('export'), 'Guardar copia JSON'],
+    [el('verifyBackup'), 'Verificar integridad'],
+    [el('importBtn'), 'Restaurar archivo JSON'],
+    [el('exportCsv'), 'Exportar informe CSV'],
+    [el('paymentsCsv'), 'Exportar cobros CSV'],
+    [auditButton, 'Auditar cobros']
+  ].forEach(([button, label]) => {
+    if (!button) return;
+    button.textContent = label;
+    button.classList.add('secondary');
+    actionHost.appendChild(button);
+  });
+  actionHost.appendChild(el('importFile'));
+
+  const closeNav = () => {
+    document.body.classList.remove('nav-open');
+    el('menuToggle').setAttribute('aria-expanded', 'false');
+  };
+  const openNav = () => {
+    document.body.classList.add('nav-open');
+    el('menuToggle').setAttribute('aria-expanded', 'true');
+  };
+  el('menuToggle').onclick = () => document.body.classList.contains('nav-open') ? closeNav() : openNav();
+  el('sidebarClose').onclick = closeNav;
+  el('navBackdrop').onclick = closeNav;
+
+  const updatePageHeader = id => {
+    const copy = PAGE_TITLES[id] || PAGE_TITLES.inicio;
+    el('pageTitle').textContent = copy[0];
+    el('pageContext').textContent = copy[1];
+  };
+
+  const originalTab = tab;
+  tab = function(id) {
+    originalTab(id);
+    updatePageHeader(id);
+    closeNav();
+  };
+  tabs.querySelectorAll('[data-tab]').forEach(button => button.onclick = () => tab(button.dataset.tab));
+  backupTab.onclick = () => tab('respaldos');
+
+  el('primaryNewJob').onclick = () => {
+    tab('trabajos');
+    el('jobTitle').focus();
+  };
+  el('allJobsBtn').onclick = () => tab('trabajos');
+  el('financeBtn').onclick = () => tab('cobros');
+  el('showDue').onclick = () => {
+    tab('trabajos');
+    el('jobFilter').value = 'vencidos';
+    render();
+  };
+  el('v19BackupHelp').onclick = () => tab('respaldos');
+
+  function readSnapshots() {
+    try {
+      const value = JSON.parse(localStorage.getItem(SNAP_KEY) || '[]');
+      return Array.isArray(value) ? value.filter(item => item && item.data && valid(item.data)) : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function storeSnapshots(items) {
+    const copies = items.slice(0, 10);
+    while (copies.length) {
+      try {
+        localStorage.setItem(SNAP_KEY, JSON.stringify(copies));
+        return copies;
+      } catch (error) {
+        copies.pop();
+      }
+    }
+    try { localStorage.removeItem(SNAP_KEY); } catch (error) {}
+    return [];
+  }
+
+  function captureSnapshot(reason) {
+    const snapshots = readSnapshots();
+    const serialized = JSON.stringify(data);
+    if (snapshots[0] && JSON.stringify(snapshots[0].data) === serialized) return snapshots;
+    snapshots.unshift({
+      id: uuid(),
+      createdAt: new Date().toISOString(),
+      reason: String(reason || 'Guardado automático'),
+      data: structuredClone(data)
+    });
+    return storeSnapshots(snapshots);
+  }
+
+  const basePersist = persist;
+  persist = function(reason) {
+    basePersist();
+    captureSnapshot(typeof reason === 'string' ? reason : 'Guardado automático');
+  };
+
+  function shortDateTime(value) {
+    if (!value) return '—';
+    try {
+      return new Date(value).toLocaleString('es-ES', {day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'});
+    } catch (error) {
+      return '—';
+    }
+  }
+
+  function displayDate(value) {
+    if (!value) return 'Sin fecha';
+    const parts = value.split('-');
+    return parts.length === 3 ? parts[2] + '/' + parts[1] + '/' + parts[0] : value;
+  }
+
+  function renderSnapshots() {
+    const snapshots = readSnapshots();
+    el('backupCount').textContent = snapshots.length;
+    el('backupLastAuto').textContent = snapshots.length ? shortDateTime(snapshots[0].createdAt) : '—';
+    el('snapshotList').innerHTML = snapshots.length ? snapshots.map(snapshot => `
+      <div class="snapshot-row">
+        <div><strong>${escapeHtml(snapshot.reason || 'Copia interna')}</strong><p>${escapeHtml(shortDateTime(snapshot.createdAt))} · ${snapshot.data.clients.length} clientes · ${snapshot.data.jobs.length} trabajos</p></div>
+        <button class="secondary" type="button" data-restore-snapshot="${escapeHtml(snapshot.id)}">Restaurar</button>
+      </div>`).join('') : '<div class="empty">Todavía no hay copias internas. Se crearán al guardar cambios.</div>';
+    el('snapshotList').querySelectorAll('[data-restore-snapshot]').forEach(button => {
+      button.onclick = () => restoreSnapshot(button.dataset.restoreSnapshot);
+    });
+  }
+
+  function restoreSnapshot(id) {
+    const snapshot = readSnapshots().find(item => item.id === id);
+    if (!snapshot) return alert('La copia interna ya no está disponible.');
+    if (!confirm('Esta restauración sustituirá los datos locales actuales. Se guardará primero una copia del estado presente. ¿Continuar?')) return;
+    captureSnapshot('Antes de restaurar copia interna');
+    data = structuredClone(snapshot.data);
+    basePersist();
+    captureSnapshot('Restauración interna completada');
+    render();
+    alert('Copia interna restaurada y validada.');
+  }
+
+  async function digest(text) {
+    if (!crypto.subtle) return null;
+    const bytes = new TextEncoder().encode(text);
+    const hash = await crypto.subtle.digest('SHA-256', bytes);
+    return Array.from(new Uint8Array(hash)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function exportV2() {
+    const exportedAt = new Date().toISOString();
+    const snapshotData = structuredClone(data);
+    const checksum = await digest(JSON.stringify(snapshotData));
+    const envelope = {
+      app: 'NEXO BUSINESS',
+      version: 2,
+      schemaVersion: 2,
+      exportedAt,
+      checksum: checksum ? {algorithm:'SHA-256', value:checksum} : null,
+      summary: {
+        clients: snapshotData.clients.length,
+        jobs: snapshotData.jobs.length,
+        quotes: snapshotData.quotes.length,
+        paymentMovements: snapshotData.jobs.reduce((count, job) => count + paymentsOf(job).length, 0)
+      },
+      data: snapshotData
+    };
+    const blob = new Blob([JSON.stringify(envelope, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = 'nexo-business-respaldo-v2-' + today() + '.json';
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
+    localStorage.setItem(EXPORT_KEY, exportedAt);
+    captureSnapshot('Exportación JSON');
+    render();
+  }
+
+  async function validateEnvelope(imported) {
+    if (!imported || imported.app !== 'NEXO BUSINESS' || !valid(imported.data)) throw Error('estructura de copia no reconocida');
+    const issues = auditData(imported.data);
+    if (issues.length) throw Error(issues.slice(0, 8).join('; '));
+    if (imported.checksum && imported.checksum.value) {
+      const actual = await digest(JSON.stringify(imported.data));
+      if (!actual || actual !== imported.checksum.value) throw Error('la suma de integridad no coincide');
+    }
+    return imported.data;
+  }
+
+  el('export').onclick = () => exportV2().catch(error => alert('No se pudo crear la copia: ' + error.message));
+  el('importBtn').onclick = () => el('importFile').click();
+  el('importFile').onchange = async event => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    try {
+      const imported = JSON.parse(await file.text());
+      const restored = await validateEnvelope(imported);
+      if (!confirm('La copia es válida. Esta operación sustituirá todos los datos locales actuales y creará antes una copia interna. ¿Continuar?')) return;
+      captureSnapshot('Antes de restaurar archivo JSON');
+      data = structuredClone(restored);
+      basePersist();
+      captureSnapshot('Archivo JSON restaurado');
+      render();
+      alert('Copia restaurada. La estructura, las relaciones y la integridad disponibles se han comprobado.');
+    } catch (error) {
+      alert('No se pudo restaurar la copia: ' + error.message);
+    } finally {
+      event.target.value = '';
+    }
+  };
+
+  el('verifyBackup').onclick = async () => {
+    try {
+      const issues = auditData(data);
+      if (issues.length) throw Error(issues.slice(0, 8).join('; '));
+      const serialized = JSON.stringify(data);
+      const roundTrip = JSON.parse(serialized);
+      if (JSON.stringify(roundTrip) !== serialized) throw Error('falló la lectura de comprobación');
+      const checksum = await digest(serialized);
+      const snapshots = readSnapshots();
+      const invalidSnapshot = snapshots.find(snapshot => auditData(snapshot.data).length);
+      if (invalidSnapshot) throw Error('una copia interna contiene incidencias');
+      show('Verificación de integridad', `
+        <p><b>Datos actuales:</b> estructura y relaciones correctas.</p>
+        <p><b>Cobros:</b> historial dentro de los límites de cada trabajo.</p>
+        <p><b>Copias internas:</b> ${snapshots.length} versiones válidas.</p>
+        <p><b>Huella de comprobación:</b> ${checksum ? escapeHtml(checksum.slice(0, 16)) + '…' : 'no disponible en este navegador'}.</p>
+        <p class="small">Esta comprobación es local. No verifica movimientos bancarios ni confirma que una descarga externa se haya guardado físicamente.</p>`);
+    } catch (error) {
+      show('Verificación de integridad', '<p><b>Resultado:</b> requiere revisión.</p><p>' + escapeHtml(error.message) + '</p>');
+    }
+    render();
+  };
+
+  el('v19Check').onclick = () => el('verifyBackup').click();
+  el('clearSnapshots').onclick = () => {
+    if (!confirm('¿Eliminar el historial de copias internas? Esta acción no afecta a los datos actuales ni a los archivos JSON ya descargados.')) return;
+    localStorage.removeItem(SNAP_KEY);
+    captureSnapshot('Inicio de nuevo historial');
+    render();
+  };
+
+  function dashboardRows() {
+    const jobs = data.jobs.filter(opened).sort((a, b) => (a.due || '9999').localeCompare(b.due || '9999')).slice(0, 8);
+    if (!jobs.length) return '<table class="work-table"><tbody><tr><td><div class="empty">No hay trabajos abiertos. Crea un cliente y registra el primer trabajo.</div></td></tr></tbody></table>';
+    return `<table class="work-table">
+      <thead><tr><th>Trabajo</th><th>Cliente</th><th>Estado</th><th>Próximo seguimiento</th><th>Importe</th><th><span class="sr-only">Acciones</span></th></tr></thead>
+      <tbody>${jobs.map(job => `
+        <tr>
+          <td data-label="Trabajo"><span class="cell-title">${escapeHtml(job.title)}</span><span class="cell-subtitle">${escapeHtml(job.notes || 'Sin notas')}</span></td>
+          <td data-label="Cliente">${escapeHtml(clientName(job.client))}</td>
+          <td data-label="Estado"><span class="status ${escapeHtml(job.status)}">${escapeHtml(statusLabel(job.status))}</span></td>
+          <td data-label="Seguimiento" class="${due(job) ? 'date-overdue' : ''}">${escapeHtml(displayDate(job.due))}</td>
+          <td data-label="Importe" class="amount">${money(job.amount)}</td>
+          <td><button class="secondary row-action" type="button" data-edit-job="${escapeHtml(job.id)}" aria-label="Editar ${escapeHtml(job.title)}">Editar</button></td>
+        </tr>`).join('')}</tbody>
+    </table>`;
+  }
+
+  function priorityRows() {
+    const jobs = data.jobs.filter(due).sort((a, b) => a.due.localeCompare(b.due)).slice(0, 5);
+    if (!jobs.length) return '<div class="priority-empty">No hay seguimientos vencidos. Las próximas fechas aparecerán aquí.</div>';
+    return jobs.map(job => {
+      const parts = job.due.split('-');
+      return `<div class="priority-row">
+        <div class="priority-date hot"><span>${escapeHtml(parts[2] || '')}</span>${escapeHtml((parts[1] || '').padStart(2, '0'))}/${escapeHtml((parts[0] || '').slice(-2))}</div>
+        <div class="priority-copy"><strong>${escapeHtml(job.title)}</strong><p>${escapeHtml(clientName(job.client))}<br>${escapeHtml(statusLabel(job.status))}</p></div>
+      </div>`;
+    }).join('');
+  }
+
+  function v20Render() {
+    el('dashboardJobs').innerHTML = dashboardRows();
+    el('priority').innerHTML = priorityRows();
+    el('dashboardJobs').querySelectorAll('[data-edit-job]').forEach(button => {
+      button.onclick = () => editJob(button.dataset.editJob);
+    });
+    el('v2PendingMirror').textContent = el('dashPending').textContent;
+    const accepted = data.jobs.filter(job => ['aceptado','en_curso'].includes(job.status)).length;
+    el('v2JobsMeta').textContent = accepted + ' aceptados o en curso';
+    el('v2QuoteMeta').textContent = data.quotes.length === 1 ? '1 presupuesto registrado' : data.quotes.length + ' presupuestos registrados';
+    const issues = auditData(data);
+    el('backupIntegrity').textContent = issues.length ? issues.length + ' avisos' : 'Correcta';
+    const lastExport = localStorage.getItem(EXPORT_KEY) || localStorage.getItem('nexo-v19-last-export');
+    el('backupLastExport').textContent = lastExport ? shortDateTime(lastExport) : '—';
+    el('topBackupDate').textContent = lastExport ? 'copia ' + shortDateTime(lastExport) : 'sin copia externa';
+    const snapshots = readSnapshots();
+    el('v19Integrity').textContent = issues.length ? 'Revisión necesaria' : 'Integridad correcta';
+    el('v19BackupStatus').textContent = snapshots.length ? snapshots.length + ' copias internas · última ' + shortDateTime(snapshots[0].createdAt) : 'No hay copias internas. Guarda un cambio o exporta un JSON.';
+    renderSnapshots();
+  }
+
+  const previousRender = render;
+  render = function() {
+    previousRender();
+    v20Render();
+  };
+
+  if (!readSnapshots().length) captureSnapshot('Punto de partida V2.0');
+  render();
+  updatePageHeader('inicio');
+
+  document.querySelector('.foot').textContent = 'NEXO BUSINESS V2.0 · Aplicación local sin servidor · Sin cuentas, sincronización, cifrado en reposo ni verificación bancaria · Entorno de prueba: no utilizar todavía con información sensible o actividad comercial.';
+})();
+
+</script></body></html>
